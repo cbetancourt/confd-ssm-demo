@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.9
 
 ENV ENVIRONMENT=dev
 ENV AWS_DEFAULT_REGION=us-east-1
