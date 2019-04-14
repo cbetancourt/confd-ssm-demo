@@ -26,7 +26,7 @@ The default AWS region the examples are using is `us-east-1`, US East (N. Virgin
 
 Just run
 ```
-docker-comopse up --build
+docker-compose up --build
 ```
 
 The template files will be generated in the `config-output` folder.
