@@ -1,2 +1,2 @@
-/target/*
-!/target/.gitkeep
+/config-output/*
+!/config-output/.gitkeep

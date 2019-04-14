@@ -18,7 +18,7 @@ aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd 
 
 ## The containers
 
-Check the `docker-compose.yaml`, it mounts up the `target` directory, where the templates will be generated, it also mounts up your `~/.aws` folder so it can use the credentials. The container is passing in the `AWS_PROFILE` variable which is then going to be used by `confd` to authenticate.
+Check the `docker-compose.yaml`, it mounts up the `config-output` directory, where the templates will be generated, it also mounts up your `~/.aws` folder so it can use the credentials. The container is passing in the `AWS_PROFILE` variable which is then going to be used by `confd` to authenticate.
 
 The default AWS region the examples are using is `us-east-1`, US East (N. Virgina).
 
@@ -29,4 +29,4 @@ Just run
 docker-comopse up --build
 ```
 
-The template files will be generated in the `target` folder.
+The template files will be generated in the `config-output` folder.

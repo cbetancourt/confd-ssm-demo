@@ -10,7 +10,7 @@ ARG VERSION=0.16.0
 RUN wget https://github.com/kelseyhightower/confd/releases/download/v${VERSION}/confd-${VERSION}-linux-amd64 -O /usr/local/bin/confd \
   && chmod +x /usr/local/bin/confd
 
-VOLUME [ "/target" ]
+VOLUME [ "/config-output" ]
 
 COPY manifest /
 
