@@ -16,17 +16,31 @@ aws ssm put-parameter --name /dev/client-api/database/user --value client --type
 aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd --type SecureString
 ```
 
-## The containers
+## Containers
 
-Check the `docker-compose.yaml`, it mounts up the `config-output` directory, where the templates will be generated, it also mounts up your `~/.aws` folder so it can use the credentials. The container is passing in the `AWS_PROFILE` variable which is then going to be used by `confd` to authenticate.
+### Server
+First, we will build the confd server image that our client will use, and tag it as `confd-alpine`. This is only necessary when your base Alpine image or version of confd need to be upgraded.
+```
+docker build ./server/ -t confd-alpine
+```
+
+The server is configured with an entrypoint script, but it will not run automatically since its template configuration is empty.
+
+### Client
+The client image will build on the server image, add your template configuration, map an output directory, and execute the entrypoint script. The image will stop once your configuration files are and saved to the output directory.
+
+## Put it All Together
+The `docker-compose.yaml` mounts the `output` directory where the templates will be generated. It also mounts up your `~/.aws` directory so it can use your AWS credentials.
+
+The container is passing in the `AWS_PROFILE` variable which is then going to be used by `confd` to authenticate.
 
 The default AWS region the examples are using is `us-east-1`, US East (N. Virgina).
 
-## Start the project
+### Generate your configuration files
 
-Just run
+Just run:
 ```
 docker-compose up --build
 ```
 
-The template files will be generated in the `config-output` folder.
+The template files will be generated in the `output` directory.

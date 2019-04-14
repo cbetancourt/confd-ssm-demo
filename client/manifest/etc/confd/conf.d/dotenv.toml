@@ -1,6 +1,6 @@
 [template]
 src = "dotenv.tmpl"
-dest = "/config-output/.env"
+dest = "/output/.env"
 keys = [
     "/client-api",
 ]

@@ -1,11 +1,10 @@
 version: "3"
 
 services:
-  confd:
-    build: ./confd
+  client:
+    build: ./client
     volumes:
-      - ./config-output:/config-output
+      - ./output:/output
       - ~/.aws:/root/.aws
     environment:
       - AWS_PROFILE
-
