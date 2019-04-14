@@ -9,10 +9,3 @@ services:
     environment:
       - AWS_PROFILE
 
-  awscli:
-    build: ./awscli
-    volumes:
-      - ./target:/target
-      - ~/.aws:/root/.aws
-    environment:
-      - AWS_PROFILE

@@ -11,7 +11,7 @@ A demo project that uses confd to generate config files for applications. It use
 
 You can generate the example parameters in SSM with the following commands, just make sure you have set the `AWS_PROFILE` environment variable before you run them.
 
-```bash
+```
 aws ssm put-parameter --name /dev/client-api/database/user --value client --type String
 aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd --type SecureString
 ```
@@ -20,14 +20,12 @@ aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd 
 
 Check the `docker-compose.yaml`, it mounts up the `target` directory, where the templates will be generated, it also mounts up your `~/.aws` folder so it can use the credentials. The container is passing in the `AWS_PROFILE` variable which is then going to be used by `confd` to authenticate.
 
-The default AWS region the examples are using is `eu-west-1 (Ireland)`.
+The default AWS region the examples are using is `us-east-1`, US East (N. Virgina).
 
-The `awscli` container is not used for anything, it's just there to compare the size against the `confd` one. At the time I was testing the size difference was about 100MB.
-
-## Start the projects
+## Start the project
 
 Just run
-```bash
+```
 docker-comopse up --build
 ```
 
