@@ -7,14 +7,15 @@ ENV AWS_REGION=us-east-1
 RUN apk --update --no-cache add ca-certificates \
   && apk add curl
 
+ARG TARGET_DIR=/usr/local/bin
 ARG VERSION=0.16.0
 ARG URL=https://github.com/kelseyhightower/confd/releases/download/v${VERSION}/confd-${VERSION}-linux-amd64
-ARG TARGET_DIR=/usr/local/bin
-RUN curl -L ${URL} -o ${TARGET_DIR}/confd && chmod u+x ${TARGET_DIR}/confd
+WORKDIR ${TARGET_DIR}
 
-VOLUME [ "/config-output" ]
+RUN curl -L ${URL} -o confd && chmod u+x confd
 
 COPY manifest /
 
-WORKDIR ${TARGET_DIR}
+VOLUME [ "/config-output" ]
+
 ENTRYPOINT [ "./entrypoint.sh" ]
