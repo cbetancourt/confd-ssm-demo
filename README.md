@@ -19,9 +19,9 @@ aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd 
 ## Containers
 
 ### Server
-First, we will build the confd server image that our client will use, and tag it as `confd-alpine`. This is only necessary when your base Alpine image or version of confd need to be upgraded.
+First, we will build the confd server image that our client will use, and tag it as `alpine-confd`. This is only necessary when your base Alpine image or version of confd need to be upgraded.
 ```
-docker build ./server/ -t confd-alpine
+docker build ./server/ -t alpine-confd
 ```
 
 The server is configured with an entrypoint script, but it will not run automatically since its template configuration is empty.
