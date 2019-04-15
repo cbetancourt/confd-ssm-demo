@@ -1,6 +1,6 @@
 [template]
 src = "config.yaml.tmpl"
-dest = "/config-output/config.yaml"
+dest = "/output/config.yaml"
 keys = [
     "/client-api",
 ]
