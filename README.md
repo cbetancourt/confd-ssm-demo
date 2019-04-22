@@ -12,8 +12,8 @@ A demo project that uses confd to generate config files for applications. It use
 You can generate the example parameters in SSM with the following commands, just make sure you have set the `AWS_PROFILE` environment variable before you run them.
 
 ```
-aws ssm put-parameter --name /dev/client-api/database/user --value client --type String
-aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd --type SecureString
+$ aws ssm put-parameter --name /dev/client-api/database/user --value client --type String
+$ aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd --type SecureString
 ```
 
 ## Containers
@@ -21,7 +21,7 @@ aws ssm put-parameter --name /dev/client-api/database/password --value p@ssw0rd 
 ### Server
 First, we will build the confd server image that our client will use, and tag it as `alpine-confd`. This is only necessary when your base Alpine image or version of confd need to be upgraded.
 ```
-docker build ./server/ -t alpine-confd
+$ docker build ./server/ -t alpine-confd
 ```
 
 The server is configured with an entrypoint script, but it will not run automatically since its template configuration is empty.
@@ -40,7 +40,8 @@ The default AWS region the examples are using is `us-east-1`, US East (N. Virgin
 
 Just run:
 ```
-docker-compose up --build
+$ export ENVIRONMENT=dev
+$ docker-compose up --build
 ```
 
 The template files will be generated in the `output` directory.
