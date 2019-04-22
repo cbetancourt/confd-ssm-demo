@@ -1,4 +1,4 @@
-FROM confd-alpine:latest
+FROM alpine-confd:latest
 
 ENV ENVIRONMENT=dev
 ENV AWS_DEFAULT_REGION=us-east-1
